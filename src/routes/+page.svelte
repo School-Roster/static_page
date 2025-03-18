@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from "svelte";
+
   import Background from "$lib/components/Background.svelte";
   import Header from "$lib/components/Header.svelte";
   import Title from "$lib/components/Title.svelte";
@@ -7,6 +9,10 @@
   import Contacto from "$lib/components/Contacto.svelte";
   import Footer from "$lib/components/footer.svelte";
   import DetectarOs from "$lib/components/DetectarOS.svelte";
+
+  onMount(() => {
+    document.title = "School Roster";
+  });
 
   const headerOffsetContacto = -1400;
   const headerOffsetNosotros = -800;
