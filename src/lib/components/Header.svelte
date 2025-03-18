@@ -1,5 +1,7 @@
 <script>
-  export let scrollToSection;
+  export let scrollToContacto;
+  export let scrollToNosotros;
+  export let scrollToSoftware;
 </script>
 
 <header class="header">
@@ -8,9 +10,13 @@
       <img src="/logo.png" alt="Logo" /> School Roster
     </div>
     <nav class="nav">
-      <a on:click={() => scrollToSection("contacto")}>Contacto</a>
-      <a on:click={() => scrollToSection("nosotros")}>Sobre nosotros</a>
-      <a on:click={() => scrollToSection("software")}>Software</a>
+      <a href="#contacto" on:click|preventDefault={scrollToContacto}>Contacto</a
+      >
+      <a href="#nosotros" on:click|preventDefault={scrollToNosotros}
+        >Sobre nosotros</a
+      >
+      <a href="#software" on:click|preventDefault={scrollToSoftware}>Software</a
+      >
     </nav>
     <div class="socialmedia">
       <a
@@ -71,7 +77,7 @@
   }
 
   .logo img {
-    width: 140px;
+    width: 120px;
     height: 90px;
     margin-right: 10px;
   }

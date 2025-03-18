@@ -7,11 +7,11 @@
     const plataforma = navigator.platform.toLowerCase();
 
     if (plataforma.includes("win")) {
-      os = "Windows";
+      os = "windows";
     } else if (plataforma.includes("mac")) {
       os = "macOS";
     } else if (plataforma.includes("linux")) {
-      os = "Linux";
+      os = "linux";
     } else {
       os = "Sistema operativo desconocido";
     }
@@ -24,6 +24,7 @@
 
 <button class="btn">
   {#if os}
+    <img src="/{os}.png" />
     <p class="os-result">Descarga para {os}</p>
   {/if}
 </button>
@@ -37,7 +38,7 @@
     text-align: center;
     background-color: rgba(255, 255, 255, 0.171);
     border: 2px solid #007bff;
-    border-radius: 50px;
+    border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 2;
@@ -46,6 +47,10 @@
     margin: 0 auto;
     cursor: pointer;
     transition: all 0.3s ease;
+  }
+
+  .btn img {
+    margin-right: 20px;
   }
 
   .btn:hover {

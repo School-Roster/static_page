@@ -1,25 +1,44 @@
 <script>
   import Background from "$lib/components/Background.svelte";
   import Header from "$lib/components/Header.svelte";
-  import Title from "$lib/components/title.svelte";
+  import Title from "$lib/components/Title.svelte";
   import Carrusel from "$lib/components/Carrusel.svelte";
-  import Footer from "$lib/components/footer.svelte";
   import Nosotros from "$lib/components/Nosotros.svelte";
-  import DetectarOs from "$lib/components/DetectarOS.svelte";
   import Contacto from "$lib/components/Contacto.svelte";
+  import Footer from "$lib/components/footer.svelte";
+  import DetectarOs from "$lib/components/DetectarOS.svelte";
 
-  function scrollToSection(id) {
-    const section = document.getElementById(id);
+  const headerOffsetContacto = -1400;
+  const headerOffsetNosotros = -800;
+  const headerOffsetSoftware = -160;
+
+  function scrollToContacto() {
+    const section = document.getElementById("contacto");
     if (section) {
-      const headerOffset = 120;
       const elementPosition = section.getBoundingClientRect().top;
       const offsetPosition =
-        elementPosition + window.pageYOffset - headerOffset;
+        elementPosition + window.pageYOffset - headerOffsetContacto;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    }
+  }
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+  function scrollToNosotros() {
+    const section = document.getElementById("nosotros");
+    if (section) {
+      const elementPosition = section.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffsetNosotros;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    }
+  }
+
+  function scrollToSoftware() {
+    const section = document.getElementById("software");
+    if (section) {
+      const elementPosition = section.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffsetSoftware;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
   }
 </script>
@@ -27,9 +46,8 @@
 <div class="Bg">
   <Background />
 </div>
-<div class="header">
-  <Header {scrollToSection} />
-</div>
+
+<Header {scrollToContacto} {scrollToNosotros} {scrollToSoftware} />
 
 <div class="Title">
   <Title />
@@ -56,7 +74,6 @@
     margin-top: 50px;
     margin-bottom: 50px;
   }
-
   .nosotros,
   .contacto {
     margin-bottom: 50px;

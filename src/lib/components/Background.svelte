@@ -65,6 +65,7 @@
     top: 0;
     left: 0;
     background: #0c1a22;
+    filter: brightness(50%);
     overflow: hidden;
   }
 

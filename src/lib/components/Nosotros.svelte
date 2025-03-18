@@ -11,24 +11,89 @@
     <div class="image-item">
       <img src="/ftvic.jpg" alt="Imagen de la empresa" />
       <div class="image-text">
+        <div class="socialmedia">
+          <a
+            href="https://github.com/awtGerry"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/github.png" alt="Github" />
+          </a>
+          <a
+            href="https://www.instagram.com/moises.morales00/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/instagram.png" alt="Instagram" />
+          </a>
+        </div>
         <p>Ing. Victor Rodriguez</p>
       </div>
     </div>
     <div class="image-item">
       <img src="/ftmoises.jpg" alt="Imagen de la empresa" />
       <div class="image-text">
+        <div class="socialmedia">
+          <a
+            href="https://github.com/moye30"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/github.png" alt="Github" />
+          </a>
+          <a
+            href="https://www.instagram.com/moises.morales00/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/instagram.png" alt="Instagram" />
+          </a>
+        </div>
+
         <p>Ing. Moises Morales</p>
       </div>
     </div>
     <div class="image-item">
       <img src="/ftadrian.jpg" alt="Imagen de la empresa" />
       <div class="image-text">
+        <div class="socialmedia">
+          <a
+            href="https://github.com/Abrotello"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/github.png" alt="Github" />
+          </a>
+          <a
+            href="https://www.instagram.com/a.brotello/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/instagram.png" alt="Instagram" />
+          </a>
+        </div>
         <p>Ing. Adrian Botello</p>
       </div>
     </div>
     <div class="image-item">
       <img src="/ftcc.jpg" alt="Imagen de la empresa" />
       <div class="image-text">
+        <div class="socialmedia">
+          <a
+            href="https://github.com/chriscaza"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/github.png" alt="Github" />
+          </a>
+          <a
+            href="https://www.instagram.com/chris.caza/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/instagram.png" alt="Instagram" />
+          </a>
+        </div>
         <p>Ing. Christian Cazarin</p>
       </div>
     </div>
@@ -87,5 +152,10 @@
     width: 120px;
     height: auto;
     border-radius: 50px;
+  }
+  .socialmedia img {
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
   }
 </style>
