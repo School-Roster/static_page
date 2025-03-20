@@ -54,9 +54,6 @@
     {/key}
   </div>
 
-  <button class="carousel-button prev" on:click={prev}> &#10094; </button>
-  <button class="carousel-button next" on:click={next}> &#10095; </button>
-
   <div class="indicators">
     {#each images as _, index}
       <span
@@ -98,41 +95,20 @@
     transition: transform 0.2s ease-out;
   }
 
-  .carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 1rem;
-    cursor: pointer;
-    font-size: 2rem;
-    z-index: 10;
-  }
-
-  .prev {
-    left: 10px;
-  }
-
-  .next {
-    right: 10px;
-  }
-
   .indicators {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 5px;
+    gap: 20px;
   }
 
   .indicator {
-    width: 10px;
-    height: 10px;
+    width: 50px;
+    height: 80px;
     background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
+    border-radius: 20px;
     cursor: pointer;
   }
 
@@ -149,20 +125,12 @@
       width: 90%;
       aspect-ratio: 750 / 450;
     }
-    .carousel-button {
-      padding: 0.75rem;
-      font-size: 1.75rem;
-    }
   }
 
   @media (max-width: 600px) {
     .carousel-container {
       width: 100%;
       aspect-ratio: 750 / 450;
-    }
-    .carousel-button {
-      padding: 0.5rem;
-      font-size: 1.5rem;
     }
     .indicators {
       gap: 3px;
