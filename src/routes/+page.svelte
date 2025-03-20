@@ -1,7 +1,7 @@
 <script>
   import Background from "$lib/components/Background.svelte";
   import Header from "$lib/components/Header.svelte";
-  import Title from "$lib/components/title.svelte";
+  import Title from "$lib/components/Title.svelte";
   import Carrusel from "$lib/components/Carrusel.svelte";
   import Footer from "$lib/components/footer.svelte";
   import Nosotros from "$lib/components/Nosotros.svelte";
