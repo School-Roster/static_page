@@ -1,6 +1,6 @@
 <p align="center">
   <p align="center">
-   <img width="200" height="150" src="static/icons/logo_transparent.png" alt="Logo">
+   <img width="200" height="150" src="static/logo.png" alt="Logo">
   </p>
 	<h1 align="center"><b>School rooster</b></h1>
 	<p align="center">
@@ -17,5 +17,4 @@
 
 > [!WARNING]
 > Proyecto en progreso...
-
 School Roster es una aplicacion de codigo abierto multiplataforma escrita en rust.
