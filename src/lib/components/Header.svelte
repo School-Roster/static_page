@@ -156,7 +156,6 @@
   }
 
   .content {
-    margin-top: 120px;
     padding: 20px;
     font-family: "Nunito", sans-serif;
   }
