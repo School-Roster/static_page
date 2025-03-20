@@ -25,8 +25,8 @@
     const centerY = rect.height / 2;
     const offsetX = (x - centerX) / centerX;
     const offsetY = (y - centerY) / centerY;
-    tiltX = offsetY * maxTilt;
-    tiltY = offsetX * -maxTilt;
+    tiltX = -offsetY * maxTilt;
+    tiltY = offsetX * maxTilt;
   }
 
   function handleMouseLeave() {
