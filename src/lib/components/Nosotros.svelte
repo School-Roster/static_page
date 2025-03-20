@@ -49,7 +49,6 @@
             <img src="/instagram.png" alt="Instagram" />
           </a>
         </div>
-
         <p>Ing. Moises Morales</p>
       </div>
     </div>
@@ -125,12 +124,12 @@
     font-size: 1.25rem;
     font-weight: normal;
     color: #ffffff;
+    padding: 0 20px;
   }
 
   .image-container {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
     margin-top: 20px;
@@ -140,22 +139,84 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: transform 0.3s ease;
+    position: relative;
+    width: 150px;
+  }
+
+  .image-item:hover {
+    transform: translateY(-10px);
+  }
+
+  .image-item img {
+    width: 100%;
+    max-width: 120px;
+    border-radius: 50px;
+    transition: transform 0.3s ease;
   }
 
   .image-text {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #ffffff;
-    margin-top: 10px;
+    margin-top: 5px;
+    position: relative;
+    transition: transform 0.3s ease;
   }
 
-  .image-container img {
-    width: 120px;
-    height: auto;
-    border-radius: 50px;
+  .socialmedia {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 5px;
   }
+
+  .image-item:hover .socialmedia {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   .socialmedia img {
-    width: 34px;
-    height: 34px;
-    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+  }
+
+  @media (max-width: 768px) {
+    .about-us-title {
+      font-size: 2rem;
+    }
+
+    h1 {
+      font-size: 1rem;
+    }
+
+    .image-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .image-item {
+      width: 100%;
+      max-width: 250px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about-us-title {
+      font-size: 1.8rem;
+    }
+
+    h1 {
+      font-size: 0.9rem;
+    }
+
+    .socialmedia img {
+      width: 24px;
+      height: 24px;
+    }
   }
 </style>

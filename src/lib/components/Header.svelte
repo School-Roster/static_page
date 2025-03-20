@@ -2,6 +2,11 @@
   export let scrollToContacto;
   export let scrollToNosotros;
   export let scrollToSoftware;
+  let menuAbierto = false;
+
+  function toggleMenu() {
+    menuAbierto = !menuAbierto;
+  }
 </script>
 
 <header class="header">
@@ -9,7 +14,7 @@
     <div class="logo">
       <img src="/logo.png" alt="Logo" /> School Roster
     </div>
-    <nav class="nav">
+    <nav class="nav {menuAbierto ? 'active' : ''}">
       <a href="#contacto" on:click|preventDefault={scrollToContacto}>Contacto</a
       >
       <a href="#nosotros" on:click|preventDefault={scrollToNosotros}
@@ -30,6 +35,9 @@
         <img src="/instagram.png" alt="Instagram" />
       </a>
     </div>
+    <button class="menu-toggle" on:click={toggleMenu}>
+      <img src="/menu.png" alt="Menú" />
+    </button>
   </div>
 </header>
 
@@ -68,7 +76,7 @@
   }
 
   .logo {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: white;
     display: flex;
@@ -77,29 +85,74 @@
   }
 
   .logo img {
-    width: 120px;
-    height: 90px;
+    width: 100px;
+    height: 70px;
     margin-right: 10px;
   }
 
   .nav {
     display: flex;
-    gap: 1.5rem;
-    margin-right: 16rem;
+    gap: 2rem;
+    flex-grow: 1;
+    justify-content: center;
+    margin-right: 200px;
   }
 
   .nav a {
-    color: rgba(255, 255, 255, 0.639);
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     font-size: 1rem;
     cursor: pointer;
     font-family: "Big Shoulders", cursive;
   }
 
+  .socialmedia {
+    display: flex;
+    gap: 0.5rem;
+  }
+
   .socialmedia img {
-    width: 34px;
-    height: 34px;
-    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .menu-toggle img {
+    width: 30px;
+    height: 30px;
+  }
+
+  @media (max-width: 768px) {
+    .nav {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background: rgba(12, 26, 34, 0.9);
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .nav.active {
+      display: flex;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    .container {
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
   }
 
   .content {

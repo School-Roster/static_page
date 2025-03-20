@@ -50,7 +50,9 @@
   }
 
   .btn img {
-    margin-right: 20px;
+    width: 20px;
+    height: auto;
+    margin-right: 10px;
   }
 
   .btn:hover {
@@ -67,11 +69,29 @@
   @media (max-width: 768px) {
     .btn {
       padding: 1.2rem;
-      max-width: 100%;
+      max-width: 90%;
+      height: auto;
     }
-
     .os-result {
       font-size: 1rem;
+    }
+    .btn img {
+      width: 18px;
+      margin-right: 8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .btn {
+      padding: 1rem;
+      max-width: 100%;
+    }
+    .os-result {
+      font-size: 0.9rem;
+    }
+    .btn img {
+      width: 16px;
+      margin-right: 6px;
     }
   }
 </style>

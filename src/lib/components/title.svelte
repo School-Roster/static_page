@@ -32,4 +32,36 @@
     max-width: 800px;
     margin: 0 auto;
   }
+
+  @media (max-width: 1024px) {
+    .main-title {
+      font-size: 4rem;
+    }
+
+    .sub-title {
+      font-size: 1.15rem;
+      max-width: 700px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .main-title {
+      font-size: 3rem;
+    }
+
+    .sub-title {
+      font-size: 1rem;
+      max-width: 90%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .main-title {
+      font-size: 2.5rem;
+    }
+
+    .sub-title {
+      font-size: 0.9rem;
+    }
+  }
 </style>

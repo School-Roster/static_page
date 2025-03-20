@@ -54,17 +54,20 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    align-items: center;
   }
 
   label {
     font-size: 1rem;
     color: #ffffff;
+    width: 100%;
     text-align: left;
   }
 
   input,
   textarea {
-    width: 740px;
+    width: 100%;
+    max-width: 740px;
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -81,13 +84,43 @@
     color: white;
     font-size: 1rem;
     border: none;
-    padding: 10px;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.3s;
   }
 
   .send-button:hover {
     background-color: #0056b3;
+  }
+
+  @media (max-width: 1024px) {
+    .contact-container {
+      padding: 1.5rem;
+    }
+    .contact-title {
+      font-size: 2rem;
+    }
+    input,
+    textarea {
+      max-width: 90%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .contact-container {
+      padding: 1rem;
+    }
+    .contact-title {
+      font-size: 1.75rem;
+    }
+    input,
+    textarea {
+      max-width: 100%;
+    }
+    .send-button {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+    }
   }
 </style>
