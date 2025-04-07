@@ -9,6 +9,7 @@
   import Contacto from "$lib/components/Contacto.svelte";
   import Footer from "$lib/components/footer.svelte";
   import DetectarOs from "$lib/components/DetectarOS.svelte";
+  import Pricing from "$lib/components/pricing.svelte";
 
   onMount(() => {
     document.title = "School Roster";

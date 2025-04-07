@@ -22,7 +22,9 @@
       >
       <a href="#software" on:click|preventDefault={scrollToSoftware}>Software</a
       >
+      <a href="/login">Login</a>
     </nav>
+
     <div class="socialmedia">
       <a
         href="https://github.com/School-Roster"
