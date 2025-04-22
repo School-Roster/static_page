@@ -1,9 +1,7 @@
 <script>
   import { onMount } from "svelte";
-  import Pricing from "$lib/components/pricing.svelte"; // Ajusta la ruta si está en otro lugar
 
   let os = "";
-  let showModal = false;
 
   function detectarSistemaOperativo() {
     const plataforma = navigator.platform.toLowerCase();
@@ -22,26 +20,14 @@
   onMount(() => {
     detectarSistemaOperativo();
   });
-
-  function abrirModal() {
-    showModal = true;
-  }
-
-  function cerrarModal() {
-    showModal = false;
-  }
 </script>
 
-<button class="btn" on:click={abrirModal}>
+<button class="btn" type="button">
   {#if os}
     <img src="/{os}.png" alt="icono" />
     <p class="os-result">Descarga para {os}</p>
   {/if}
 </button>
-
-{#if showModal}
-  <Pricing close={cerrarModal} />
-{/if}
 
 <style>
   .btn {

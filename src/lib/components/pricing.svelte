@@ -1,11 +1,10 @@
 <script>
-  import { onMount } from "svelte";
   import Login from "./login.svelte";
 
   let showPricing = true;
   let showLogin = false;
 
-  export let close;
+  export let close = null; // opcional
 
   function openLogin() {
     showPricing = false;
@@ -19,37 +18,32 @@
 </script>
 
 {#if showPricing}
-  <div class="overlay" on:click={close}>
-    <div class="modal" on:click|stopPropagation>
-      <h2 class="title">Elige tu plan</h2>
-
-      <div class="plans">
-        <div class="plan basic">
-          <h3>Básico</h3>
-          <p class="price">Gratis</p>
-          <ul>
-            <li>✔ Descarga estándar</li>
-            <li>✔ Acceso limitado</li>
-            <li>✖ IA para recomendacion de cambios</li>
-            <li>✖ Soporte prioritario</li>
-          </ul>
-          <button on:click={openLogin}>Seleccionar</button>
-        </div>
-
-        <div class="plan pro">
-          <h3>Pro</h3>
-          <p class="price">$999/Anual</p>
-          <ul>
-            <li>✔ Descarga rápida</li>
-            <li>✔ Funcionalidades avanzadas</li>
-            <li>✔ IA para recomendacion de cambios</li>
-            <li>✔ Soporte prioritario</li>
-          </ul>
-          <button on:click={openLogin}>Seleccionar</button>
-        </div>
+  <div class="pricing-container">
+    <h2 class="pricing-title">Elige tu plan</h2>
+    <div class="pricing-cards">
+      <div class="plan basic">
+        <h3>Básico</h3>
+        <p class="price">Gratis</p>
+        <ul>
+          <li>✔ Descarga estándar</li>
+          <li>✔ Acceso limitado</li>
+          <li>✖ IA para recomendación de cambios</li>
+          <li>✖ Soporte prioritario</li>
+        </ul>
+        <button on:click={openLogin}>Seleccionar</button>
       </div>
 
-      <button class="close-btn" on:click={close}>✖</button>
+      <div class="plan pro">
+        <h3>Pro</h3>
+        <p class="price">$999/Anual</p>
+        <ul>
+          <li>✔ Descarga rápida</li>
+          <li>✔ Funcionalidades avanzadas</li>
+          <li>✔ IA para recomendación de cambios</li>
+          <li>✔ Soporte prioritario</li>
+        </ul>
+        <button on:click={openLogin}>Seleccionar</button>
+      </div>
     </div>
   </div>
 {/if}
@@ -59,37 +53,27 @@
 {/if}
 
 <style>
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-  }
-
-  .modal {
-    background: rgb(12, 26, 34);
-    border-radius: 1rem;
-    padding: 2rem;
-    position: relative;
-    max-width: 800px;
-    width: 90%;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-  }
-
-  .title {
+  .pricing-container {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: #ffffff;
+    padding: 2rem;
+    background-color: #ffffffb5;
+    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    min-height: 300px;
   }
 
-  .plans {
+  .pricing-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+
+  .pricing-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
@@ -97,11 +81,12 @@
   }
 
   .plan {
-    background: #f5f5f5;
-    border-radius: 1rem;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
     padding: 1.5rem;
     width: 280px;
     text-align: center;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
     transition:
       transform 0.3s ease,
       box-shadow 0.3s ease;
@@ -109,7 +94,7 @@
 
   .plan:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
   }
 
   .plan h3 {
@@ -141,43 +126,44 @@
     color: white;
     border: none;
     padding: 0.7rem 1.2rem;
-    border-radius: 0.5rem;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 1rem;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
   }
 
   button:hover {
     background-color: #0056b3;
   }
 
-  .close-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: transparent;
-    color: #ffffff;
-    font-size: 1.5rem;
-    border: none;
-    cursor: pointer;
-  }
-
-  .plan.basic {
-    border-top: 5px solid #4caf50;
-  }
-
-  .plan.pro {
-    border-top: 5px solid #007bff;
-  }
-
-  @media (max-width: 768px) {
-    .plans {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .modal {
+  @media (max-width: 1024px) {
+    .pricing-container {
       padding: 1.5rem;
+    }
+    .pricing-title {
+      font-size: 2rem;
+    }
+    .plan {
+      width: 90%;
+      max-width: 740px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .pricing-container {
+      padding: 1rem;
+    }
+    .pricing-title {
+      font-size: 1.75rem;
+    }
+    .plan {
+      width: 100%;
+      padding: 1rem;
+    }
+    button {
+      font-size: 0.9rem;
+      padding: 0.6rem 1rem;
     }
   }
 </style>

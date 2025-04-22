@@ -66,6 +66,9 @@
   <Carrusel />
 </div>
 
+<div id="pricing" class="pricing">
+  <Pricing />
+</div>
 <div id="nosotros" class="nosotros">
   <Nosotros />
 </div>
@@ -83,6 +86,10 @@
   }
   .nosotros,
   .contacto {
+    margin-bottom: 50px;
+  }
+  .pricing {
+    margin-top: 50px;
     margin-bottom: 50px;
   }
 </style>

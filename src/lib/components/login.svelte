@@ -7,7 +7,7 @@
     apiKey: "AIzaSyAuNzDbQ7uDkm8njIWYF0djle4szTkMsTQ",
     authDomain: "school-roster-app.firebaseapp.com",
     projectId: "school-roster-app",
-    storageBucket: "school-roster-app.firebasestorage.app",
+    storageBucket: "school-roster-app.appspot.com",
     messagingSenderId: "181287876141",
     appId: "1:181287876141:web:a90762a57eaa0811962aa4",
     measurementId: "G-ZGLHHL85C7",
@@ -28,9 +28,34 @@
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       console.log("Usuario autenticado:", user);
-      close();
+
+      // Realiza la solicitud a la API de pagos
+      const response = await fetch("http://localhost:3000/pagos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          currency: "mxn",
+          amount: 99,
+          quantity: 1,
+          productName: "Membresia Plus",
+          email: user.email, // Enviar el correo si es necesario
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.url) {
+        // Redirige directamente a la pasarela de pago
+        window.location.href = data.url;
+      } else {
+        console.log("No se recibió una URL de pago");
+      }
+
+      close(); // Cierra el modal
     } catch (error) {
-      console.error("Error al iniciar sesión con Google:", error);
+      console.error("Error al iniciar sesión o al generar pago:", error);
     } finally {
       loading = false;
     }
