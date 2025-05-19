@@ -15,9 +15,9 @@
     document.title = "School Roster";
   });
 
-  const headerOffsetContacto = -1400;
-  const headerOffsetNosotros = -800;
-  const headerOffsetSoftware = -160;
+  const headerOffsetContacto = -2100;
+  const headerOffsetNosotros = -1500;
+  const headerOffsetSoftware = -250;
 
   function scrollToContacto() {
     const section = document.getElementById("contacto");

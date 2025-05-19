@@ -22,7 +22,6 @@
       >
       <a href="#software" on:click|preventDefault={scrollToSoftware}>Software</a
       >
-      <a href="/login">Login</a>
     </nav>
 
     <div class="socialmedia">

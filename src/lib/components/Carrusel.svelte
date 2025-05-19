@@ -105,11 +105,10 @@
   }
 
   .indicator {
-    width: 50px;
-    height: 80px;
+    width: 30px;
+    height: 30px;
     background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    cursor: pointer;
+    border-radius: 50%;
   }
 
   .indicator.active {

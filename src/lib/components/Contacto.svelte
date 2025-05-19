@@ -1,20 +1,64 @@
+<script lang="ts">
+  let email = "";
+  let message = "";
+  let sent = false;
+
+  async function handleSubmit(event: Event) {
+    event.preventDefault();
+
+    const res = await fetch("/api/contacto", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, message }),
+    });
+
+    if (res.ok) {
+      sent = true;
+      email = "";
+      message = "";
+    } else {
+      alert("Hubo un error al enviar el mensaje");
+    }
+  }
+</script>
+
 <div class="contact-container">
   <h2 class="contact-title">Contacto</h2>
   <div class="contact-card">
-    <form>
+    <form on:submit={handleSubmit}>
       <label for="email">Correo Electrónico</label>
       <input
         type="email"
         id="email"
         placeholder="ejemplo@correo.com"
         required
+        bind:value={email}
+        disabled={sent}
       />
 
       <label for="message">Mensaje</label>
-      <textarea id="message" placeholder="Escribe tu mensaje aquí..." required
+      <textarea
+        id="message"
+        placeholder="Escribe tu mensaje aquí..."
+        required
+        bind:value={message}
+        disabled={sent}
       ></textarea>
 
-      <button type="submit" class="send-button">Enviar</button>
+      <button
+        type="submit"
+        class="send-button"
+        disabled={sent}
+        class:sent-button={sent}
+      >
+        {#if sent}
+          👍🏻 Tu correo a sido enviado, pronto te daremos una respuesta.
+        {:else}
+          Enviar
+        {/if}
+      </button>
     </form>
   </div>
 </div>
@@ -92,6 +136,15 @@
 
   .send-button:hover {
     background-color: #0056b3;
+  }
+
+  .sent-button {
+    background-color: #28a745 !important;
+    cursor: default;
+  }
+
+  .sent-button:hover {
+    background-color: #28a745 !important;
   }
 
   @media (max-width: 1024px) {
