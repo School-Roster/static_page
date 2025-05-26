@@ -1,5 +1,5 @@
 import type { RequestHandler } from "@sveltejs/kit";
-import Stripe from "stripe";
+i; /* mport Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2023-10-16",
@@ -28,3 +28,4 @@ export const POST: RequestHandler = async ({ request }) => {
     return new Response("Error creating session", { status: 500 });
   }
 };
+ */
