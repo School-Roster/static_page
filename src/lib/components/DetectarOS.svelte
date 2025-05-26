@@ -24,7 +24,8 @@
 
 <button class="btn" type="button">
   {#if os}
-    <img src="/{os}.png" alt="icono" />
+    <img src="/{os}.png" alt={os} />
+
     <p class="os-result">Descarga para {os}</p>
   {/if}
 </button>
