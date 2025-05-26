@@ -1,19 +1,25 @@
 // src/routes/api/contacto/+server.ts
 import type { RequestHandler } from "@sveltejs/kit";
+import { env } from "$env/dynamic/private"; // carga en tiempo de ejecución
 import nodemailer from "nodemailer";
-import { EMAIL_USER, EMAIL_PASS } from "$env/static/private"; // 👈  SvelteKit las lee por ti
 
 export const POST: RequestHandler = async ({ request }) => {
+  // 1. Datos del formulario
   const { email, message } = await request.json();
-
   if (!email || !message) {
     return new Response("Faltan datos", { status: 400 });
   }
 
-  // 👉  Verifica que sí existan
-  console.log("ENV USER:", EMAIL_USER);
-  console.log("ENV PASS length:", EMAIL_PASS?.length);
+  // 2. Variables de entorno en tiempo de ejecución
+  const EMAIL_USER = env.EMAIL_USER;
+  const EMAIL_PASS = env.EMAIL_PASS;
 
+  if (!EMAIL_USER || !EMAIL_PASS) {
+    console.error("Credenciales de correo no configuradas");
+    return new Response("Email no configurado en el servidor", { status: 500 });
+  }
+
+  // 3. Transporter de Nodemailer
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -23,17 +29,14 @@ export const POST: RequestHandler = async ({ request }) => {
   });
 
   try {
-    // Opcional: comprueba la conexión antes de enviar
-    await transporter.verify();
-
+    await transporter.verify(); // opcional
     await transporter.sendMail({
       from: email,
       to: EMAIL_USER,
       subject: "Nuevo mensaje desde tu sitio web",
       text: message,
-      html: `<p><strong>Correo del remitente:</strong> ${email}</p><p>${message}</p>`,
+      html: `<p><strong>Remitente:</strong> ${email}</p><p>${message}</p>`,
     });
-
     return new Response("Correo enviado", { status: 200 });
   } catch (err) {
     console.error("Error al enviar el correo:", err);
