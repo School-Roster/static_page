@@ -1,4 +1,5 @@
 // src/routes/api/contacto/+server.ts
+// export const prerender = true;
 import type { RequestHandler } from "@sveltejs/kit";
 import { env } from "$env/dynamic/private"; // carga en tiempo de ejecución
 import nodemailer from "nodemailer";

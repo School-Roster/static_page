@@ -1,5 +1,6 @@
-import type { RequestHandler } from "@sveltejs/kit";
-i; /* mport Stripe from "stripe";
+// export const prerender = true;
+/*import type { RequestHandler } from "@sveltejs/kit";
+import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2023-10-16",
