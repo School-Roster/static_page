@@ -3,7 +3,13 @@
   import { cubicOut } from "svelte/easing";
 
   let currentIndex = 0;
-  const images = ["/carru-2.jpg", "/carru-3.jpg", "/carru-4.jpg"];
+  const images = [
+    "/carru1.jpg",
+    "/carru5.jpg",
+    "/carru-2.jpg",
+    "/carru-3.jpg",
+    "/carru-4.jpg",
+  ];
 
   let tiltX = 0;
   let tiltY = 0;
