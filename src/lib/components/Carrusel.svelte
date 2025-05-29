@@ -14,6 +14,8 @@
   let tiltX = 0;
   let tiltY = 0;
   const maxTilt = 5;
+  let startX = 0;
+  let endX = 0;
 
   function next() {
     currentIndex = (currentIndex + 1) % images.length;
@@ -39,6 +41,16 @@
     tiltX = 0;
     tiltY = 0;
   }
+
+  function handleTouchStart(event) {
+    startX = event.touches[0].clientX;
+  }
+
+  function handleTouchEnd(event) {
+    endX = event.changedTouches[0].clientX;
+    if (startX - endX > 50) next();
+    if (endX - startX > 50) prev();
+  }
 </script>
 
 <div class="carousel-container">
@@ -48,6 +60,8 @@
         class="image-container"
         on:mousemove={handleMouseMove}
         on:mouseleave={handleMouseLeave}
+        on:touchstart={handleTouchStart}
+        on:touchend={handleTouchEnd}
       >
         <img
           src={images[currentIndex]}
@@ -80,6 +94,7 @@
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: #000;
   }
 
   .carousel-images {
@@ -97,8 +112,10 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    object-position: center;
     border-radius: 10px;
     transition: transform 0.2s ease-out;
+    background-color: #000;
   }
 
   .indicators {
