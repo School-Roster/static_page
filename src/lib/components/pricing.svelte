@@ -4,6 +4,9 @@
   let showPricing = true;
   let showLogin = false;
 
+  let seleccionadoBasico = false;
+  let seleccionadoPro = false;
+
   export let close = null; // opcional
 
   function openLogin() {
@@ -14,6 +17,14 @@
   function closeLogin() {
     showPricing = true;
     showLogin = false;
+  }
+
+  function handleSeleccionBasico() {
+    seleccionadoBasico = true;
+  }
+
+  function handleSeleccionPro() {
+    seleccionadoPro = true;
   }
 </script>
 
@@ -30,7 +41,11 @@
           <li>✖ IA para recomendación de cambios</li>
           <li>✖ Soporte prioritario</li>
         </ul>
-        <button on:click={openLogin}>Seleccionar</button>
+        {#if !seleccionadoBasico}
+          <button on:click={handleSeleccionBasico}>Seleccionar</button>
+        {:else}
+          <button disabled>Opción disponible pronto</button>
+        {/if}
       </div>
 
       <div class="plan pro">
@@ -42,7 +57,11 @@
           <li>✔ IA para recomendación de cambios</li>
           <li>✔ Soporte prioritario</li>
         </ul>
-        <button on:click={openLogin}>Seleccionar</button>
+        {#if !seleccionadoPro}
+          <button on:click={handleSeleccionPro}>Seleccionar</button>
+        {:else}
+          <button disabled>Opción disponible pronto</button>
+        {/if}
       </div>
     </div>
   </div>
@@ -135,6 +154,11 @@
 
   button:hover {
     background-color: #0056b3;
+  }
+
+  button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
   }
 
   @media (max-width: 1024px) {

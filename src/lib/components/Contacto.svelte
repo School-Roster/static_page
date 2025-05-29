@@ -1,66 +1,68 @@
 <script lang="ts">
   let email = "";
   let message = "";
-  let sent = false;
+  let sending = false; // animación mientras envía
+  let sent = false; // estado final
 
-  async function handleSubmit(event: Event) {
-    event.preventDefault();
+  async function handleSubmit(e: SubmitEvent) {
+    e.preventDefault();
+    sending = true;
 
     const res = await fetch("/api/contacto", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, message }),
     });
 
+    sending = false;
     if (res.ok) {
       sent = true;
       email = "";
       message = "";
     } else {
-      alert("Hubo un error al enviar el mensaje");
+      const { error } = await res.json().catch(() => ({}));
+      alert(error ?? "Error desconocido al enviar");
     }
   }
 </script>
 
 <div class="contact-container">
   <h2 class="contact-title">Contacto</h2>
-  <div class="contact-card">
-    <form on:submit={handleSubmit}>
-      <label for="email">Correo Electrónico</label>
-      <input
-        type="email"
-        id="email"
-        placeholder="ejemplo@correo.com"
-        required
-        bind:value={email}
-        disabled={sent}
-      />
 
-      <label for="message">Mensaje</label>
-      <textarea
-        id="message"
-        placeholder="Escribe tu mensaje aquí..."
-        required
-        bind:value={message}
-        disabled={sent}
-      ></textarea>
+  <form class="contact-card" on:submit={handleSubmit}>
+    <label for="email">Correo Electrónico</label>
+    <input
+      id="email"
+      type="email"
+      bind:value={email}
+      required
+      disabled={sent || sending}
+    />
 
-      <button
-        type="submit"
-        class="send-button"
-        disabled={sent}
-        class:sent-button={sent}
-      >
-        {#if sent}
-          👍🏻 Tu correo a sido enviado, pronto te daremos una respuesta.
-        {:else}
-          Enviar
-        {/if}
-      </button>
-    </form>
-  </div>
+    <label for="message">Mensaje</label>
+    <textarea
+      id="message"
+      bind:value={message}
+      required
+      disabled={sent || sending}
+    ></textarea>
+
+    <button
+      type="submit"
+      disabled={sent || sending}
+      class:send-button={!sent}
+      class:sent-button={sent}
+      class:sending-button={sending}
+    >
+      {#if sent}
+        ✅ Enviado
+      {:else if sending}
+        ⌛ Enviando…
+      {:else}
+        Enviar
+      {/if}
+    </button>
+  </form>
 </div>
 
 <style>
@@ -140,11 +142,12 @@
 
   .sent-button {
     background-color: #28a745 !important;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
     cursor: default;
-  }
-
-  .sent-button:hover {
-    background-color: #28a745 !important;
   }
 
   @media (max-width: 1024px) {

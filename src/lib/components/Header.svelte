@@ -7,6 +7,10 @@
   function toggleMenu() {
     menuAbierto = !menuAbierto;
   }
+
+  function cerrarMenu() {
+    menuAbierto = false;
+  }
 </script>
 
 <header class="header">
@@ -14,14 +18,35 @@
     <div class="logo">
       <img src="/logo.png" alt="Logo" /> School Roster
     </div>
-    <nav class="nav {menuAbierto ? 'active' : ''}">
-      <a href="#contacto" on:click|preventDefault={scrollToContacto}>Contacto</a
+
+    <nav class="nav" class:active={menuAbierto}>
+      <a
+        href="#contacto"
+        on:click|preventDefault={() => {
+          scrollToContacto();
+          cerrarMenu();
+        }}
       >
-      <a href="#nosotros" on:click|preventDefault={scrollToNosotros}
-        >Sobre nosotros</a
+        Contacto
+      </a>
+      <a
+        href="#nosotros"
+        on:click|preventDefault={() => {
+          scrollToNosotros();
+          cerrarMenu();
+        }}
       >
-      <a href="#software" on:click|preventDefault={scrollToSoftware}>Software</a
+        Sobre nosotros
+      </a>
+      <a
+        href="#software"
+        on:click|preventDefault={() => {
+          scrollToSoftware();
+          cerrarMenu();
+        }}
       >
+        Software
+      </a>
     </nav>
 
     <div class="socialmedia">
@@ -36,6 +61,7 @@
         <img src="/instagram.png" alt="Instagram" />
       </a>
     </div>
+
     <button class="menu-toggle" on:click={toggleMenu}>
       <img src="/menu.png" alt="Menú" />
     </button>
@@ -74,6 +100,7 @@
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
   }
 
   .logo {
@@ -97,6 +124,7 @@
     flex-grow: 1;
     justify-content: center;
     margin-right: 200px;
+    transition: all 0.3s ease-in-out;
   }
 
   .nav a {
@@ -122,42 +150,60 @@
     background: none;
     border: none;
     cursor: pointer;
+    z-index: 1100;
   }
 
   .menu-toggle img {
     width: 30px;
     height: 30px;
+    margin-right: 50px;
   }
 
+  /* Responsive */
   @media (max-width: 768px) {
+    .container {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+
     .nav {
       display: none;
       flex-direction: column;
       position: absolute;
-      top: 60px;
+      top: 100%;
       right: 0;
-      background: rgba(12, 26, 34, 0.9);
+      background: rgba(12, 26, 34, 0.95);
       width: 100%;
       text-align: center;
-      padding: 1rem;
+      padding: 1rem 0;
+      margin: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .nav.active {
       display: flex;
     }
 
+    .socialmedia {
+      display: none;
+    }
+
     .menu-toggle {
       display: block;
     }
 
-    .container {
-      flex-wrap: wrap;
-      justify-content: space-between;
+    .logo img {
+      width: 80px;
+      height: auto;
+    }
+
+    .logo {
+      font-size: 1rem;
     }
   }
 
   .content {
-    padding: 20px;
+    padding: 120px 20px 20px;
     font-family: "Nunito", sans-serif;
   }
 </style>

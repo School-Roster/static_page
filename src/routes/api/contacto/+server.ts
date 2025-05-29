@@ -1,46 +1,59 @@
-// src/routes/api/contacto/+server.ts
-// export const prerender = true;
 import type { RequestHandler } from "@sveltejs/kit";
-import { env } from "$env/dynamic/private"; // carga en tiempo de ejecución
+import { env } from "$env/dynamic/private";
 import nodemailer from "nodemailer";
 
 export const POST: RequestHandler = async ({ request }) => {
-  // 1. Datos del formulario
   const { email, message } = await request.json();
+
   if (!email || !message) {
-    return new Response("Faltan datos", { status: 400 });
+    return new Response(JSON.stringify({ ok: false, error: "Faltan datos" }), {
+      status: 400,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 
-  // 2. Variables de entorno en tiempo de ejecución
-  const EMAIL_USER = env.EMAIL_USER;
-  const EMAIL_PASS = env.EMAIL_PASS;
-
+  const { EMAIL_USER, EMAIL_PASS } = env;
   if (!EMAIL_USER || !EMAIL_PASS) {
     console.error("Credenciales de correo no configuradas");
-    return new Response("Email no configurado en el servidor", { status: 500 });
+    return new Response(
+      JSON.stringify({ ok: false, error: "Servidor sin email" }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   }
 
-  // 3. Transporter de Nodemailer
   const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: EMAIL_USER,
-      pass: EMAIL_PASS,
-    },
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, // SSL
+    auth: { user: EMAIL_USER, pass: EMAIL_PASS },
+    logger: true, // ← activa trazas en consola
+    debug: true, // ← más detalle si falla
   });
 
   try {
-    await transporter.verify(); // opcional
     await transporter.sendMail({
-      from: email,
+      from: `School Roster <${EMAIL_USER}>`, // tiene que ser TU cuenta
+      replyTo: email,
       to: EMAIL_USER,
       subject: "Nuevo mensaje desde tu sitio web",
-      text: message,
-      html: `<p><strong>Remitente:</strong> ${email}</p><p>${message}</p>`,
+      html: `<p><b>Remitente:</b> ${email}</p><p>${message}</p>`,
     });
-    return new Response("Correo enviado", { status: 200 });
+
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
   } catch (err) {
-    console.error("Error al enviar el correo:", err);
-    return new Response("Error al enviar el correo", { status: 500 });
+    console.error("Error Nodemailer:", err);
+    return new Response(
+      JSON.stringify({ ok: false, error: "Falló el envío" }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   }
 };
