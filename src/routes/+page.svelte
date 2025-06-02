@@ -10,6 +10,7 @@
   import Footer from "$lib/components/footer.svelte";
   import DetectarOs from "$lib/components/DetectarOS.svelte";
   import Pricing from "$lib/components/pricing.svelte";
+  import TextoInformativo from '$lib/components/info.svelte';
 
   onMount(() => {
     document.title = "School Roster";
@@ -61,6 +62,8 @@
 </div>
 
 <DetectarOs />
+<TextoInformativo />
+
 
 <div id="software" class="carrusel">
   <Carrusel />
