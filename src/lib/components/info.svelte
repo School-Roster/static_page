@@ -1,10 +1,13 @@
 <script>
 </script>
 
-<div class="info-container">
+<div class="info-container"> 
   <p class="info-text">
-    Ultima version: v0.1.0 | Fecha de lanzamiento: 1/Jun/2025 | Tamaño: 258GB
-
+    <a href="https://github.com/School-Roster/school_roster.app/releases" target="_blank" rel="noopener noreferrer">
+      Última versión: v0.1.0
+    </a>
+    | Fecha de lanzamiento: 1/Jun/2025 |
+    <a>+Información</a>
   </p>
 </div>
 
@@ -20,6 +23,11 @@
     color: #ffffff5b;
     max-width: 800px;
     margin: 0 auto;
+  }
+
+  .info-text a {
+    color: inherit;
+    text-decoration: none;
   }
 
   @media (max-width: 1024px) {
