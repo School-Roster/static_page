@@ -4,10 +4,10 @@
 <div class="info-container"> 
   <p class="info-text">
     <a href="https://github.com/School-Roster/school_roster.app/releases" target="_blank" rel="noopener noreferrer">
-      Última versión: v0.1.0
+      Última versión: v0.1.1
     </a>
-    | Fecha de lanzamiento: 1/Jun/2025 |
-    <a>+Información</a>
+    | Fecha de lanzamiento: 3/Jun/2025 |
+    <a>Peso: 250MB</a>
   </p>
 </div>
 
