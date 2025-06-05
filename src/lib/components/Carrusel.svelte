@@ -95,7 +95,6 @@
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    background-color: #00000000;
   }
 
   .carousel-images {
@@ -152,7 +151,8 @@
 
   @media (max-width: 600px) {
     .carousel-container {
-      width: 100%;
+      width: 90%;
+      height: 500px;
       aspect-ratio: 750 / 450;
     }
     .indicators {
@@ -160,6 +160,7 @@
     }
     .indicator {
       width: 8px;
+      margin-top: -120px;
       height: 8px;
     }
   }
