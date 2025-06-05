@@ -95,7 +95,7 @@
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    background-color: #000;
+    background-color: #00000000;
   }
 
   .carousel-images {
@@ -116,7 +116,7 @@
     object-position: center;
     border-radius: 10px;
     transition: transform 0.2s ease-out;
-    background-color: #000;
+    background-color: #ffffff00;
   }
 
   .indicators {
