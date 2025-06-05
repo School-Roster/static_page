@@ -208,6 +208,7 @@
   .download-link {
     display: inline-block;
     width: 50%;
+    margin-left: 85px;
     margin-top: 1rem;
     padding: 0.75rem 1rem;
     font-size: 1rem;
