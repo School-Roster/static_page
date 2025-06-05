@@ -6,6 +6,8 @@
   const images = [
     "/carru1.jpg",
     "/carru5.jpg",
+    "/completo.jpg",
+    "/materias.jpg",
     "/carru2.jpg",
     "/carru-2.jpg",
     "/carru-3.jpg",
