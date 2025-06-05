@@ -1,22 +1,25 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  let os = "";          
-  let showFaq = false;  
+  let os = "";
+  let showFaq = false;
 
   const downloadLinks: Record<string, string> = {
-    windows: "https://github.com/School-Roster/school_roster.app/releases/download/v0.1.1/school-roster_0.1.1_x64-setup.exe",
-    macOS:   "https://github.com/School-Roster/school_roster.app/releases/download/v0.1.1/school-roster_0.1.1_aarch64.dmg",
-    linux:   "https://github.com/School-Roster/school_roster.app/releases/download/v0.1.1/school-roster_0.1.1_amd64.AppImage"
+    windows:
+      "https://github.com/School-Roster/school_roster.app/releases/download/v0.1.1/school-roster_0.1.1_x64-setup.exe",
+    macOS:
+      "https://github.com/School-Roster/school_roster.app/releases/download/v0.1.1/school-roster_0.1.1_aarch64.dmg",
+    linux:
+      "https://github.com/School-Roster/school_roster.app/releases/download/v0.1.1/school-roster_0.1.1_amd64.AppImage",
   };
 
   function detectarSistemaOperativo() {
     const plataforma = navigator.platform.toLowerCase();
 
-    if (plataforma.includes("win"))       os = "windows";
-    else if (plataforma.includes("mac"))  os = "macOS";
-    else if (plataforma.includes("linux"))os = "linux";
-    else                                  os = "desconocido";
+    if (plataforma.includes("win")) os = "windows";
+    else if (plataforma.includes("mac")) os = "macOS";
+    else if (plataforma.includes("linux")) os = "linux";
+    else os = "desconocido";
   }
 
   const toggleFaq = () => (showFaq = !showFaq);
@@ -45,20 +48,36 @@
           <h3>macOS</h3>
           <ul>
             <li>Descarga el archivo <code>.dmg</code>.</li>
-            <li>Ábrelo y arrastra la aplicación a la carpeta <strong>Aplicaciones</strong>.</li>
-            <li>Si ves una advertencia, ve a <em>Preferencias del Sistema → Seguridad y privacidad</em> y permite la app manualmente.</li>
+            <li>
+              Ábrelo y arrastra la aplicación a la carpeta <strong
+                >Aplicaciones</strong
+              >.
+            </li>
+            <li>
+              Si ves una advertencia, ve a <em
+                >Preferencias del Sistema → Seguridad y privacidad</em
+              > y permite la app manualmente.
+            </li>
           </ul>
 
           <h3>Windows</h3>
           <ul>
             <li>Descarga el instalador <code>.exe</code>.</li>
-            <li>Ejecuta el archivo. Si aparece una advertencia de SmartScreen, haz clic en <em>"Más información"</em> y luego en <em>"Ejecutar de todas formas"</em>.</li>
+            <li>
+              Ejecuta el archivo. Si aparece una advertencia de SmartScreen, haz
+              clic en <em>"Más información"</em> y luego en
+              <em>"Ejecutar de todas formas"</em>.
+            </li>
           </ul>
 
           <h3>Linux</h3>
           <ul>
             <li>Descarga el archivo <code>.AppImage</code>.</li>
-            <li>Hazlo ejecutable con <code>chmod +x nombre_del_archivo.AppImage</code>.</li>
+            <li>
+              Hazlo ejecutable con <code
+                >chmod +x nombre_del_archivo.AppImage</code
+              >.
+            </li>
             <li>Ejecuta el archivo directamente.</li>
           </ul>
 
@@ -67,7 +86,12 @@
               Descargar para {os}
             </a>
           {:else}
-            <p>No pudimos detectar tu sistema operativo. Visita la <a href="https://github.com/School-Roster/school_roster.app/releases" target="_blank">página de descargas</a>.</p>
+            <p>
+              No pudimos detectar tu sistema operativo. Visita la <a
+                href="https://github.com/School-Roster/school_roster.app/releases"
+                target="_blank">página de descargas</a
+              >.
+            </p>
           {/if}
         </div>
       </details>
@@ -91,7 +115,7 @@
 
           <h4>Memoria RAM</h4>
           <ul>
-            <li>2 GB </li>
+            <li>2 GB</li>
           </ul>
 
           <h4>Almacenamiento</h4>
@@ -106,7 +130,9 @@
         </div>
       </details>
 
-      <button class="close" on:click={toggleFaq} aria-label="Cerrar FAQ">Cerrar</button>
+      <button class="close" on:click={toggleFaq} aria-label="Cerrar FAQ"
+        >Cerrar</button
+      >
     </div>
   </div>
 {/if}
@@ -118,10 +144,10 @@
     justify-content: center;
     align-items: center;
     padding: 1.5rem;
-    background: rgba(255,255,255,0.17);
+    background: rgba(255, 255, 255, 0.17);
     border: 2px solid #007bff;
     border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     height: 50px;
     margin: 0 auto;
@@ -131,15 +157,23 @@
     position: relative;
     z-index: 2;
   }
-  .btn:hover { background: #094067; }
-  .btn img   { width: 20px; margin-right: 10px; }
-  .os-result { font-size: 1.25rem; margin: 0; }
+  .btn:hover {
+    background: #094067;
+  }
+  .btn img {
+    width: 20px;
+    margin-right: 10px;
+  }
+  .os-result {
+    font-size: 1.25rem;
+    margin: 0;
+  }
 
   /* --- OVERLAY & MODAL --- */
   .overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,7 +186,7 @@
     width: 90%;
     border-radius: 1rem;
     padding: 2rem 1.5rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 
     /* Hacer scrollable si hay mucho contenido */
     max-height: 90vh;
@@ -160,20 +194,37 @@
     scroll-behavior: smooth;
   }
 
-  .modal h2 { margin-top: 0; }
-  details   { margin: 1rem 0; }
-  summary   { cursor: pointer; font-weight: 600; }
+  .modal h2 {
+    margin-top: 0;
+  }
+  details {
+    margin: 1rem 0;
+  }
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
 
   .download-link {
     display: inline-block;
-    margin-top: 0.5rem;
-    padding: 0.6rem 1rem;
+    width: 50%;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
     border-radius: 0.5rem;
-    border: 1px solid #094067;
+    border: none;
+    background-color: #007bff;
+    color: white;
     text-decoration: none;
-    transition: background 0.25s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s;
   }
-  .download-link:hover { background: #094067; color: #fff; }
+
+  .download-link:hover {
+    background-color: #0056b3;
+  }
 
   .close {
     margin-top: 1.5rem;
@@ -188,7 +239,8 @@
     font-size: 1rem;
   }
 
-  details h3, details h4 {
+  details h3,
+  details h4 {
     margin: 1rem 0 0.5rem;
     font-size: 1.1rem;
     color: #094067;
@@ -205,14 +257,37 @@
 
   /* --- RESPONSIVE --- */
   @media (max-width: 768px) {
-    .btn      { padding: 1.2rem; max-width: 90%; height: auto; }
-    .os-result{ font-size: 1rem; }
-    .btn img  { width: 18px; margin-right: 8px; }
+    .btn {
+      padding: 1.2rem;
+      max-width: 90%;
+      height: auto;
+    }
+    .os-result {
+      font-size: 1rem;
+    }
+    .btn img {
+      width: 18px;
+      margin-right: 8px;
+    }
   }
 
   @media (max-width: 480px) {
-    .btn      { padding: 1rem; max-width: 100%; }
-    .os-result{ font-size: 0.9rem; }
-    .btn img  { width: 16px; margin-right: 6px; }
+    .btn {
+      padding: 1rem;
+      max-width: 100%;
+    }
+    .os-result {
+      font-size: 0.9rem;
+    }
+    .btn img {
+      width: 16px;
+      margin-right: 6px;
+    }
+  }
+  @media (max-width: 480px) {
+    .download-link {
+      font-size: 0.95rem;
+      padding: 0.65rem;
+    }
   }
 </style>

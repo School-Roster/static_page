@@ -12,10 +12,18 @@
       </p>
     </div>
     <div class="footer-social">
-      <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+      <a
+        href="https://github.com/School-Roster/school_roster.app"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img src="/github.png" alt="Github" />
       </a>
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+      <a
+        href="https://www.instagram.com/school_roster00?utm_source=ig_web_button_share_sheet&igsh=ZnJxb28xYjZiNWRy"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img src="/instagram.png" alt="Instagram" />
       </a>
     </div>

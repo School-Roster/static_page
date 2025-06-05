@@ -174,17 +174,23 @@
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 1000px) {
     .pricing-container {
       padding: 1rem;
+      width: 80%;
     }
+
     .pricing-title {
       font-size: 1.75rem;
     }
+
     .plan {
-      width: 100%;
+      width: 80%;
+      max-width: 320px;
+      margin-inline: auto;
       padding: 1rem;
     }
+
     button {
       font-size: 0.9rem;
       padding: 0.6rem 1rem;
