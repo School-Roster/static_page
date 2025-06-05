@@ -57,7 +57,7 @@
       >
         <img src="/github.png" alt="Github" />
       </a>
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.instagram.com/school_roster00/" target="_blank" rel="noopener noreferrer">
         <img src="/instagram.png" alt="Instagram" />
       </a>
     </div>

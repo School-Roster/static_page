@@ -27,7 +27,7 @@
             <img src="/instagram.png" alt="Instagram" />
           </a>
         </div>
-        <p>Ing. Victor Rodriguez</p>
+        <p>Victor Rodriguez</p>
       </div>
     </div>
     <div class="image-item">
@@ -49,7 +49,7 @@
             <img src="/instagram.png" alt="Instagram" />
           </a>
         </div>
-        <p>Ing. Moises Morales</p>
+        <p>Moises Morales</p>
       </div>
     </div>
     <div class="image-item">
@@ -71,7 +71,7 @@
             <img src="/instagram.png" alt="Instagram" />
           </a>
         </div>
-        <p>Ing. Adrian Botello</p>
+        <p>Adrian Botello</p>
       </div>
     </div>
     <div class="image-item">
@@ -93,7 +93,7 @@
             <img src="/instagram.png" alt="Instagram" />
           </a>
         </div>
-        <p>Ing. Christian Cazarin</p>
+        <p>Christian Cazarin</p>
       </div>
     </div>
   </div>

@@ -2,13 +2,20 @@
 </script>
 
 <div class="info-container"> 
-  <p class="info-text">
+  <div class="info-text">
     <a href="https://github.com/School-Roster/school_roster.app/releases" target="_blank" rel="noopener noreferrer">
-      Última versión: v0.1.1
+      Última versión: v1.0.0
     </a>
-    | Fecha de lanzamiento: 3/Jun/2025 |
+
+    |
+      Multiplataforma: 
+      <img src="/linux.png" style="width: 16px;" />
+      <img src="/macOS.png" style="width: 16px;" />
+      <img src="/windows.png" style="width: 16px;" />
+    |
+
     <a>Peso: 250MB</a>
-  </p>
+  </div>
 </div>
 
 <style>

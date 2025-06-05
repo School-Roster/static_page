@@ -6,11 +6,11 @@
 
   const downloadLinks: Record<string, string> = {
     windows:
-      "https://github.com/School-Roster/school_roster.app/releases/download/v0.1.1/school-roster_0.1.1_x64-setup.exe",
+      "https://github.com/School-Roster/school_roster.app/releases/download/v1.0.0/school-roster_1.0.0_x64-setup.exe",
     macOS:
-      "https://github.com/School-Roster/school_roster.app/releases/download/v0.1.1/school-roster_0.1.1_aarch64.dmg",
+      "https://github.com/School-Roster/school_roster.app/releases/download/v1.0.0/school-roster_1.0.0_aarch64.dmg",
     linux:
-      "https://github.com/School-Roster/school_roster.app/releases/download/v0.1.1/school-roster_0.1.1_amd64.AppImage",
+      "https://github.com/School-Roster/school_roster.app/releases/download/v1.0.0/school-roster_1.0.0_amd64.AppImage",
   };
 
   function detectarSistemaOperativo() {
