@@ -2,7 +2,7 @@
 </script>
 
 <div class="title-container">
-  <h1 class="main-title">Generador de Horarios Optimizado</h1>
+  <h1 class="main-title">Generador de horarios optimizado</h1>
   <h2 class="sub-title">
     Optimizamos el tiempo de creación de horarios escolares, así como asignación
     de aulas más eficientes. Una IA que ayuda a realizar cambios y sugerencias.
