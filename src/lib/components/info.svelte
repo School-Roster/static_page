@@ -4,7 +4,7 @@
 <div class="info-container"> 
   <div class="info-text">
     <a href="https://github.com/School-Roster/school_roster.app/releases" target="_blank" rel="noopener noreferrer">
-      Última versión: v1.0.0
+      Última versión: v1.0.1
     </a>
 
     |
